@@ -4,8 +4,6 @@
  */
 package my.JavaApplication2;
 
-import java.awt.Component;
-
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -61,15 +59,14 @@ public class NewJFrame extends javax.swing.JFrame {
         Return = new javax.swing.JPanel();
         enterReceiptID = new javax.swing.JLabel();
         fieldForReceiptID = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         issueRefund = new javax.swing.JButton();
         checkReceipt = new javax.swing.JButton();
         isValid = new javax.swing.JTextField();
         returnItemUPC = new javax.swing.JLabel();
         returnIUPCField = new javax.swing.JTextField();
         returnQuantity = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        returnQuanField = new javax.swing.JTextField();
+        isSuccessRet = new javax.swing.JTextField();
         customer = new javax.swing.JPanel();
         registration = new javax.swing.JRadioButton();
         purchaseOnline = new javax.swing.JRadioButton();
@@ -170,14 +167,6 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        cancelOrder.setText("Cancel Order");
-        cancelOrder.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelOrderMouseClicked(evt);
-            }
-        });
-        
-        
         javax.swing.GroupLayout itemInputLayout = new javax.swing.GroupLayout(itemInput);
         itemInput.setLayout(itemInputLayout);
         itemInputLayout.setHorizontalGroup(
@@ -245,8 +234,19 @@ public class NewJFrame extends javax.swing.JFrame {
         expiryDate.setText("Expiry Date:");
 
         cancelOrder.setText("Cancel Order");
+        cancelOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelOrderMouseClicked(evt);
+            }
+        });
+        
 
         completePurchase.setText("Complete Purchase");
+        completePurchase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                completePurchaseMouseClicked(evt);
+            }
+        });
 
         totalLabel.setText("Total:");
 
@@ -328,11 +328,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
         enterReceiptID.setText("Enter Receipt ID:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         issueRefund.setText("Issue Refund");
+        issueRefund.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                issueRefundMouseClicked(evt);
+            }
+        });
 
         checkReceipt.setText("Check Receipt");
         checkReceipt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -345,6 +346,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
         returnQuantity.setText("Quantity:");
 
+        returnQuanField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnQuanFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ReturnLayout = new javax.swing.GroupLayout(Return);
         Return.setLayout(ReturnLayout);
         ReturnLayout.setHorizontalGroup(
@@ -355,11 +362,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(enterReceiptID)
                     .addComponent(returnItemUPC))
                 .addGap(34, 34, 34)
-                .addGroup(ReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(ReturnLayout.createSequentialGroup()
-                        .addComponent(issueRefund)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ReturnLayout.createSequentialGroup()
                         .addGroup(ReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldForReceiptID, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,7 +374,12 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addGroup(ReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(isValid, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(returnQuanField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(ReturnLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(issueRefund)
+                        .addGap(85, 85, 85)
+                        .addComponent(isSuccessRet, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ReturnLayout.setVerticalGroup(
@@ -388,15 +396,12 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(returnItemUPC)
                     .addComponent(returnIUPCField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(returnQuantity)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(ReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReturnLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReturnLayout.createSequentialGroup()
-                        .addComponent(issueRefund)
-                        .addGap(55, 55, 55))))
+                    .addComponent(returnQuanField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(ReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(issueRefund)
+                    .addComponent(isSuccessRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout clerkLayout = new javax.swing.GroupLayout(clerk);
@@ -455,6 +460,11 @@ public class NewJFrame extends javax.swing.JFrame {
         password.setText("Password:");
 
         createButton.setText("Create!");
+        createButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout registrationPanelLayout = new javax.swing.GroupLayout(registrationPanel);
         registrationPanel.setLayout(registrationPanelLayout);
@@ -819,36 +829,51 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
+
+    //total price that will be displayed
     int dollars = 0;
+
     private void addToCartMouseClicked(java.awt.event.MouseEvent evt) {                                       
         
         // -- {{ What happens when you press the "ADD TO CART" button }} --
-    	    	
+    	
+    	String preiid, prequantity;
         int iid;
         int quantity;
         
-        // i will handle this later for blank fields.
-//        String preiid;
-//        preiid = enterItemUPC.getText();
-//        
-//        if (preiid.length() == 0) System.out.println("ERROR");
-//        
-        //grabs item_upc and item_quantity from the text field that the user enters.
-        iid = Integer.parseInt(enterItemUPC.getText());
-        quantity = Integer.parseInt(enterItemQuan.getText());
+        preiid = enterItemUPC.getText();
+        prequantity = enterItemQuan.getText();
         
-        
-        dollars += quantity * 1;
-        total.setText(String.valueOf(dollars));
-        
-        // For debugging purposes:
-        System.out.println("you entered: " + iid + " " + quantity);
+        // Checks to see if one of the Item UPC or Quantity fields are blank
+        if (preiid.length() == 0 || prequantity.length() == 0) {
+        	// Error message
+    		JOptionPane.showMessageDialog(null, "Both Item UPC and Quantity fields must be filled.",
+    				"Inane error",
+    				JOptionPane.ERROR_MESSAGE);
+    		isValid.setText("Invalid");
+        	
+    		//All is well
+        } else {
+
+        	//grabs item_upc and item_quantity from the text field that the user enters.
+        	iid = Integer.parseInt(enterItemUPC.getText());
+        	quantity = Integer.parseInt(enterItemQuan.getText());
+
+        	//the dollar value.  This is very rough, I just want to be sure that this works.
+        	dollars += quantity * 1;
+        	total.setText(String.valueOf(dollars));
+
+        	// For debugging purposes:
+        	System.out.println("you entered: " + iid + " " + quantity);
+        }
         
     } 
     
+    
     private void cancelOrder1MouseClicked(java.awt.event.MouseEvent evt) {                                          
-        // What happens when the first cancel order is clicked
+        // -- {{ What happens when the first cancel order is clicked? }} --
+    	// It should clear out all the text fields.
     	
     	String nothing;
     	nothing = "";
@@ -856,11 +881,15 @@ public class NewJFrame extends javax.swing.JFrame {
     	enterItemQuan.setText(String.valueOf(nothing));
     	total.setText(String.valueOf(nothing));
     	fieldForCC.setText(String.valueOf(nothing));
-    	fieldforExpiryDate.setText(String.valueOf(nothing));    	
+    	fieldforExpiryDate.setText(String.valueOf(nothing));
+    	
+    	//very important to reset the total amount when the previous order has been cancelled.
+    	dollars = 0;
     }  
     
     private void cancelOrderMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        // What happens when the first cancel order is clicked
+        // -- {{ What happens when the first cancel order is clicked? }} --
+    	// It should clear out all the text fields.
     	
     	String nothing;
     	nothing = "";
@@ -868,39 +897,15 @@ public class NewJFrame extends javax.swing.JFrame {
     	enterItemQuan.setText(String.valueOf(nothing));
     	total.setText(String.valueOf(nothing));
     	fieldForCC.setText(String.valueOf(nothing));
-    	fieldforExpiryDate.setText(String.valueOf(nothing));    	
+    	fieldforExpiryDate.setText(String.valueOf(nothing));  
+    	
+    	//very important to reset the total amount when the previous order has been cancelled.
+    	dollars = 0;
     }  
-    
-    private void checkReceiptMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        // What happens when check receipt button is pressed
-    	
-    	int rid;
-    	String preid;
-    	preid = fieldForReceiptID.getText();
-//    	if(preid.length() == 0) {
-//
-//			//    		JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be green.",
-////    			    "Inane error",
-////    			    JOptionPane.ERROR_MESSAGE);
-//    		JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be green.");
-//    	}
-    	
-    	rid = Integer.parseInt(fieldForReceiptID.getText());
-    	// rid is receipt ID, now we need a SQL statement to verify
-    	
-    	//if valid:
-    	isValid.setText("Valid");
-    	
-    	//if not valid:
-    	//isValid.setText("Not Valid");
-    	
-    	//Testing purposes:
-    	System.out.println("Your receipt is " + rid + ".");
-    	
-    }     
     
     private void deletePreviousMouseClicked(java.awt.event.MouseEvent evt) {                                            
         // ADD THE DELETE PREVIOUS SQL STATEMENT HERE
+    	//hesitant to add code here.  I don't think it was a requirement, maybe we can do it for the bonus?
     }
 
     private void cashOrCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashOrCardActionPerformed
@@ -953,8 +958,230 @@ public class NewJFrame extends javax.swing.JFrame {
     private void tsiDateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsiDateFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tsiDateFieldActionPerformed
+
+    private void checkReceiptMouseClicked(java.awt.event.MouseEvent evt) {
+        // -- {{ What happens when "Check Receipt" button is pressed }} --
+    	
+    	int rid;
+    	String prerid;
+    	prerid = fieldForReceiptID.getText();
+    	
+    	//checks to see if ReceiptID field is left empty.
+    	if(prerid.length() == 0) {
+
+    		JOptionPane.showMessageDialog(null, "Receipt field cannot be blank.",
+    				"Inane error",
+    				JOptionPane.ERROR_MESSAGE);
+    		isValid.setText("Invalid");
+    	} else {
+    		//Not empty! Yay the clerk isn't retarded.    		
+    		// rid is receipt ID, now we need a SQL statement to verify that the RID exists in the statement.
+    		rid = Integer.parseInt(fieldForReceiptID.getText());
+    	
+    	
+    	//if valid:
+    	isValid.setText("Valid");
+    	
+    	//if not valid:
+    	//isValid.setText("Not Valid");
+    	
+    	// For testing purposes:
+    	System.out.println("Your receipt is " + rid + ".");
+    	}
+    }
+
+    private void issueRefundMouseClicked(java.awt.event.MouseEvent evt) {
+        // -- {{ What happens when the "Issue Refund" button is clicked }} --
+    	
+    	String preiid, prequantity;
+    	int iid, quantity;
+    	
+    	preiid = returnIUPCField.getText();
+    	prequantity = returnQuanField.getText();
+    	
+    	if (preiid.length() == 0 || prequantity.length() == 0) {
+    		JOptionPane.showMessageDialog(null, " The Item UPC and Quantity fields cannot be blank.",
+    				"Inane error",
+    				JOptionPane.ERROR_MESSAGE);
+    		isSuccessRet.setText("Invalid");
+    		
+    	} else {
+    		// All the fields are filled in
+    	iid = Integer.parseInt(returnIUPCField.getText());
+    	quantity = Integer.parseInt(returnQuanField.getText());
+    	
+    	// For debugging purposes
+    	System.out.println("You have returned: " + quantity + " of item upc: " + iid);
+    	isSuccessRet.setText("Valid");
+    	}
+    	
+    	
+    }
+    
+    private void completePurchaseMouseClicked(java.awt.event.MouseEvent evt) {                                              
+        // -- {{ What happens when the "Complete Purchase" button is pressed }} -- 
+    	String boxValue;
+    	String preCC, preExpDate;
+    	int CC, ExpDate = 0;
+    	boxValue = cashOrCard.getSelectedItem().toString();
+    	
+    	preCC = fieldForCC.getText();
+    	preExpDate = fieldforExpiryDate.getText();
+    	
+    	if (boxValue == "Cash") {
+    		// paying by Cash, but, is the clerk dumb enough to fill in CC fields?
+    		if ( preCC.length() != 0 || preExpDate.length() != 0 ) {
+    			JOptionPane.showMessageDialog(null, "You are paying by cash.  Leave the credit card fields blank.",
+    					"Inane error",
+    					JOptionPane.ERROR_MESSAGE);
+    			isSuccessRet.setText("Invalid");
+
+    		} else { 
+    			// those fields are empty, now let's check to see if there is shit in the cart.
+    			
+    			// The grand total's field is empty, there is nothing, throw error.
+    			if (total.getText().length() == 0) {
+    				JOptionPane.showMessageDialog(null, "Seems to be no items in cart.",
+    						"Inane error",
+    						JOptionPane.ERROR_MESSAGE);
+    				isSuccessRet.setText("Invalid");      		
+    			} else {
+    				//There is a grand total AND the credit card fields are NOT filled out.
+    				//do stuff
+    				
+    				JOptionPane.showMessageDialog(null, "Thank you for your purchase by cash.");
+    			}
+    		}
+
+
+    	} else {
+    		//paying by CC then, did the clerk/jerk fill everything out?
+    		if( preCC.length() == 0 || preExpDate.length() == 0) {
+    			JOptionPane.showMessageDialog(null, " You are paying by credit card.  Please fill in credit card info.",
+    					"Inane error",
+    					JOptionPane.ERROR_MESSAGE);
+    			isSuccessRet.setText("Invalid");
+
+    		} else {
+    			// The grand total's field is empty, there is nothing, throw error.
+    			if (total.getText().length() == 0) {
+    				JOptionPane.showMessageDialog(null, "Seems to be no items in cart.",
+    						"Inane error",
+    						JOptionPane.ERROR_MESSAGE);
+    				isSuccessRet.setText("Invalid");      		
+    			} else {
+    				//There is a grand total AND the credit card fields are filled out.
+    				
+    				
+    				//do stuff
+    				
+    				
+    				//Sets the credit card number to CC (an INT) and expiry date to ExpDate (an INT)
+    				CC = Integer.parseInt(fieldForCC.getText());
+    				ExpDate = Integer.parseInt(fieldforExpiryDate.getText());
+    				
+    				JOptionPane.showMessageDialog(null, "Thank you for your purchase by credit card.  Now we can commit credit card fraud.");
+    				
+    				//For Testing Purposes:
+    				System.out.println("Your CC #: " + CC + " and expiry date is: " + ExpDate);
+    				   				
+    				
+    			}
+    		}
+    	}
+    	    	
+    	// For debugging purposes
+    	System.out.println(boxValue);
+    }  
+    
+    
+   
+
+    private void returnQuanFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnQuanFieldActionPerformed
+        // TOdd your handling code here:
+    }//GEN-LAST:event_returnQuanFieldActionPerformed
+    
+    
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+    // :::::::! HERE BEGINS THE CODE FOR THE CUSTOMER TAB !::::::: //
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+    
+    private void createButtonMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        // -- {{ What happens when the "Create Button" is pressed? }} --
+    	
+    	String preName, preAddress, preID, prePhone, prePassword;
+    	String name, address, phone, password;
+    	int id;
+    	
+    	preName = cusName.getText();
+    	preAddress = cusAddress.getText();
+    	preID = cusID.getText();
+    	prePhone = cusPhone.getText();
+    	prePassword = cusPassword.getText();
+    	
+    	
+    	// For name, aside from checking to see if the user inputted anything, I feel that we need to make sure in the SQL database, 
+    	// that it has not been taken.  We shall expand this if statement a bit more.
+    	if (preName.length() == 0) {
+			JOptionPane.showMessageDialog(null, "Name cannot be blank.",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");    		
+    	}
+    	if (preAddress.length() == 0) {
+			JOptionPane.showMessageDialog(null, "Address cannot be blank.",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");
+    	}
+    	if (preID.length() == 0) {
+			JOptionPane.showMessageDialog(null, "ID cannot be blank.",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");
+    	}
+    	if (prePhone.length() == 0) {
+			JOptionPane.showMessageDialog(null, "Phone cannot be blank.",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");
+    	}
+    	if (prePassword.length() == 0) {
+			JOptionPane.showMessageDialog(null, "Password cannot be blank.",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");
+			
+    	} 
+    	
+    	String idChecker=cusID.getText();
+    	boolean incorrect = true;
+    	while(incorrect){
+    		try{Integer.parseInt(idChecker);incorrect = false;}
+    		catch(NumberFormatException nfe){
+    			idChecker=JOptionPane.showInputDialog("Invalid ID input. Please "+
+    					"enter your ID as numbers: ");
+    		}
+
+    	}
     
 
+    	// All fields are good to go:
+    	name = preName;
+    	address = preAddress;
+    	id = Integer.parseInt(preID);
+    	phone = prePhone;
+    	password = prePassword;
+
+    	// For testing purposes:
+
+    	System.out.println ("Customer: " + name + " who lives at: " + address + "with the id: " + id + " and phone number: " + 
+    			phone + " with password: " + password + "has been successfully created.");
+    
+    	
+    }    
+    
+    
 
     /**
      * @param args the command line arguments
@@ -1030,6 +1257,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField fieldForReceiptID;
     private javax.swing.JTextField fieldforExpiryDate;
     private javax.swing.JLabel id;
+    private javax.swing.JTextField isSuccessRet;
     private javax.swing.JTextField isValid;
     private javax.swing.JButton issueRefund;
     private javax.swing.JPanel itemInput;
@@ -1038,11 +1266,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel manager;
     private javax.swing.JPanel managerPanel;
     private javax.swing.JLabel mngrItemUPC;
@@ -1070,6 +1295,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel registrationPanel;
     private javax.swing.JTextField returnIUPCField;
     private javax.swing.JLabel returnItemUPC;
+    private javax.swing.JTextField returnQuanField;
     private javax.swing.JLabel returnQuantity;
     private javax.swing.JRadioButton topSellingItems;
     private javax.swing.JTextField total;

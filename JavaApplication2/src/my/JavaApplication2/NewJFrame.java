@@ -4,6 +4,9 @@
  */
 package my.JavaApplication2;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+
 /**
  *
  * @author ep
@@ -51,6 +54,8 @@ public class NewJFrame extends javax.swing.JFrame {
         fieldforExpiryDate = new javax.swing.JTextField();
         cancelOrder = new javax.swing.JButton();
         completePurchase = new javax.swing.JButton();
+        totalLabel = new javax.swing.JLabel();
+        total = new javax.swing.JTextField();
         Return = new javax.swing.JPanel();
         enterReceiptID = new javax.swing.JLabel();
         fieldForReceiptID = new javax.swing.JTextField();
@@ -95,26 +100,19 @@ public class NewJFrame extends javax.swing.JFrame {
         orderID = new javax.swing.JTextField();
         processButton = new javax.swing.JButton();
         dsReportPanel = new javax.swing.JPanel();
-        dsrDay = new javax.swing.JLabel();
-        dsrMonth = new javax.swing.JLabel();
-        dsrYear = new javax.swing.JLabel();
-        dsrDaySpin = new javax.swing.JSpinner();
-        dsrMonthSpin = new javax.swing.JSpinner();
-        dsrYearSpin = new javax.swing.JSpinner();
+        dsrDate = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         dsrDisplay = new javax.swing.JTextArea();
+        dsrDateField = new javax.swing.JTextField();
+        dsrButton = new javax.swing.JButton();
         tsiPanel = new javax.swing.JPanel();
-        tsiDay = new javax.swing.JLabel();
-        tsiDaySpinner = new javax.swing.JSpinner();
-        tsiMonth = new javax.swing.JLabel();
-        tsiYear = new javax.swing.JLabel();
-        tsiYearSpinner = new javax.swing.JSpinner();
-        tsiMonthSpinner = new javax.swing.JSpinner();
+        tsiDate = new javax.swing.JLabel();
         tsiTheTop = new javax.swing.JLabel();
         tsiTheTopSpinner = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        tsiGoButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        tsiDisplay = new javax.swing.JTextArea();
+        tsiDateField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -219,17 +217,23 @@ public class NewJFrame extends javax.swing.JFrame {
 
         completePurchase.setText("Complete Purchase");
 
+        totalLabel.setText("Total:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(paymentType)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paymentType)
+                    .addComponent(totalLabel))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cashOrCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cashOrCard, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(total))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ccNumber)
@@ -257,7 +261,10 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldforExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(expiryDate))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(expiryDate)
+                        .addComponent(totalLabel)
+                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelOrder)
@@ -361,6 +368,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         buttonGroupCustomer.add(purchaseOnline);
         purchaseOnline.setText("Purchase Items Online");
+        purchaseOnline.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                purchaseOnlineMouseClicked(evt);
+            }
+        });
 
         registrationPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -587,15 +599,13 @@ public class NewJFrame extends javax.swing.JFrame {
 
         dsReportPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        dsrDay.setText("Day:");
-
-        dsrMonth.setText("Month:");
-
-        dsrYear.setText("Year:");
+        dsrDate.setText("DD-MM-YYYY:");
 
         dsrDisplay.setColumns(20);
         dsrDisplay.setRows(5);
         jScrollPane2.setViewportView(dsrDisplay);
+
+        dsrButton.setText("jButton2");
 
         javax.swing.GroupLayout dsReportPanelLayout = new javax.swing.GroupLayout(dsReportPanel);
         dsReportPanel.setLayout(dsReportPanelLayout);
@@ -606,30 +616,21 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(dsReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(dsReportPanelLayout.createSequentialGroup()
-                        .addComponent(dsrDay)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dsrDaySpin, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(dsrMonth)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dsrMonthSpin, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(dsrYear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dsrYearSpin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(dsrDate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dsrDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(dsrButton)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         dsReportPanelLayout.setVerticalGroup(
             dsReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dsReportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(dsReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dsrDay)
-                    .addComponent(dsrMonth)
-                    .addComponent(dsrYear)
-                    .addComponent(dsrDaySpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dsrMonthSpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dsrYearSpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dsrDate)
+                    .addComponent(dsrDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dsrButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -637,19 +638,21 @@ public class NewJFrame extends javax.swing.JFrame {
 
         tsiPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tsiDay.setText("Day:");
-
-        tsiMonth.setText("Month:");
-
-        tsiYear.setText("Year:");
+        tsiDate.setText("DD-MM-YYY:");
 
         tsiTheTop.setText("The top");
 
-        jButton1.setText("Go!");
+        tsiGoButton.setText("Go!");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        tsiDisplay.setColumns(20);
+        tsiDisplay.setRows(5);
+        jScrollPane3.setViewportView(tsiDisplay);
+
+        tsiDateField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tsiDateFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tsiPanelLayout = new javax.swing.GroupLayout(tsiPanel);
         tsiPanel.setLayout(tsiPanelLayout);
@@ -660,39 +663,27 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(tsiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tsiPanelLayout.createSequentialGroup()
-                        .addComponent(tsiDay)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tsiDaySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tsiMonth)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tsiMonthSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tsiYear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tsiYearSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tsiDate)
+                        .addGap(109, 109, 109)
+                        .addComponent(tsiDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
                         .addComponent(tsiTheTop)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tsiTheTopSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
-                        .addComponent(jButton1)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(tsiGoButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tsiPanelLayout.setVerticalGroup(
             tsiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tsiPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tsiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tsiDay)
-                    .addComponent(tsiDaySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tsiMonth)
-                    .addComponent(tsiYear)
-                    .addComponent(tsiYearSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tsiMonthSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tsiDate)
                     .addComponent(tsiTheTop)
                     .addComponent(tsiTheTopSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(tsiGoButton)
+                    .addComponent(tsiDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addContainerGap())
@@ -724,7 +715,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(addItem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(managerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
                 .addComponent(processDelivery)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(processDeliPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -736,7 +727,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(topSellingItems)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tsiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         bigPane.addTab("Manager", manager);
@@ -773,6 +764,45 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_processReturnActionPerformed
 
+    private void purchaseOnlineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseOnlineMouseClicked
+
+        //make a pop up when Purchase Online is Clicked
+
+    	String customerID;
+    	String customerPassword;
+
+    	// While customer ID's length is 0, keep prompting user to enter customer ID.
+    	do {
+    		customerID = JOptionPane.showInputDialog("Please Enter Your Customer ID: ");
+    	} while (customerID.length() == 0);
+
+
+    	JPasswordField passwordField = new JPasswordField();
+    	// * is what you will see when user enters password.
+    	passwordField.setEchoChar('*');
+
+    	// While the customer's password length is 0, keep prompting the user to enter password.
+      	do {
+      		Object[] obj = {"Please enter the password:\n\n", passwordField};
+      	Object stringArray[] = {"OK","Cancel"};
+      	if (JOptionPane.showOptionDialog(null, obj, "Need password",
+      	JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, stringArray, obj) == JOptionPane.YES_OPTION);
+
+      	customerPassword = new String(passwordField.getPassword());
+      	} while (customerPassword.length() == 0);
+
+
+      	// for testing purposes:
+      	//System.out.println(customerID);
+      	//System.out.println(customerPassword);
+
+
+    }//GEN-LAST:event_purchaseOnlineMouseClicked
+
+    private void tsiDateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsiDateFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tsiDateFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -780,7 +810,7 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -834,13 +864,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton dailySalesReport;
     private javax.swing.JButton deletePrevious;
     private javax.swing.JPanel dsReportPanel;
-    private javax.swing.JLabel dsrDay;
-    private javax.swing.JSpinner dsrDaySpin;
+    private javax.swing.JButton dsrButton;
+    private javax.swing.JLabel dsrDate;
+    private javax.swing.JTextField dsrDateField;
     private javax.swing.JTextArea dsrDisplay;
-    private javax.swing.JLabel dsrMonth;
-    private javax.swing.JSpinner dsrMonthSpin;
-    private javax.swing.JLabel dsrYear;
-    private javax.swing.JSpinner dsrYearSpin;
     private javax.swing.JTextField enterItemQuan;
     private javax.swing.JTextField enterItemUPC;
     private javax.swing.JLabel enterReceiptID;
@@ -853,7 +880,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel itemInput;
     private javax.swing.JLabel itemUPC;
     private javax.swing.JTextField itemUPCInput;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -861,7 +887,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JPanel manager;
     private javax.swing.JPanel managerPanel;
     private javax.swing.JLabel mngrItemUPC;
@@ -888,14 +913,14 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton registration;
     private javax.swing.JPanel registrationPanel;
     private javax.swing.JRadioButton topSellingItems;
-    private javax.swing.JLabel tsiDay;
-    private javax.swing.JSpinner tsiDaySpinner;
-    private javax.swing.JLabel tsiMonth;
-    private javax.swing.JSpinner tsiMonthSpinner;
+    private javax.swing.JTextField total;
+    private javax.swing.JLabel totalLabel;
+    private javax.swing.JLabel tsiDate;
+    private javax.swing.JTextField tsiDateField;
+    private javax.swing.JTextArea tsiDisplay;
+    private javax.swing.JButton tsiGoButton;
     private javax.swing.JPanel tsiPanel;
     private javax.swing.JLabel tsiTheTop;
     private javax.swing.JSpinner tsiTheTopSpinner;
-    private javax.swing.JLabel tsiYear;
-    private javax.swing.JSpinner tsiYearSpinner;
     // End of variables declaration//GEN-END:variables
 }

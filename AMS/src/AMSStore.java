@@ -1,7 +1,7 @@
 
 // We need to import the java.sql package to use JDBC
 import java.sql.*;
-
+import java.text.ParseException;
 // for reading from the command line
 import java.io.*;
 
@@ -121,8 +121,49 @@ public class AMSStore implements ActionListener {
             
           mainFrame.dispose();
           Table itemTable = new Item(con);
-          itemTable.insert();
+          Table customerTable = new Customer(con);
+          Table purchaseTable = new Purchase(con);
+          Table purchaseItemTable = new PurchaseItem(con);
+          Table returnTable = new Return(con);
+          Table returnItemTable = new ReturnItem(con);
+          
           itemTable.display();
+          customerTable.display();
+          purchaseTable.display();
+          purchaseItemTable.display();
+          returnTable.display();
+          returnItemTable.display();
+          
+          customerTable.insert();
+          //itemTable.insert();
+          //purchaseTable.insert();
+          //purchaseItemTable.insert();
+          //returnTable.insert();
+          //returnItemTable.insert();
+          
+          /*
+          Transactions trans = new Transactions(con);          
+          try {
+              trans.inStorePurchase();
+              purchaseItemTable.display();
+              trans.inStoreRefund();
+          }           
+          catch (SQLException e) {
+        	  
+          } catch (IOException ex) {
+        	  
+          } catch (ParseException e) {
+			e.printStackTrace();
+		}
+		*/
+		
+          itemTable.display();
+          customerTable.display();
+          purchaseTable.display();
+          purchaseItemTable.display();
+          returnTable.display();
+          returnItemTable.display();
+          
              // show our interface   
         }
         else

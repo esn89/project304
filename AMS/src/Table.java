@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,22 +50,23 @@ public abstract class Table {
 			ps.setInt(position, attribute);
 		}
 	}
-	public void setNull (PreparedStatement ps, String line, boolean key, int position, String attribute) throws SQLException {
+	
+	public void setNull (PreparedStatement ps, String line, boolean key, int position, Date attribute) throws SQLException {
+		if (line.length() == 0 && !key) {
+			ps.setDate(position, null);
+		} else {
+			ps.setDate(position, attribute);
+		}
+	}
+	
+	public void setNull (PreparedStatement ps, String line, boolean key, int position) throws SQLException {
 		if (line.length() == 0 && !key) {
 			ps.setString(position, null);
 		} else {
-			ps.setString(position, attribute);
+			ps.setString(position, line);
 		}
 	}
 
-	public void setNull (PreparedStatement ps, String line, boolean key, int position, boolean attribute) throws SQLException {
-		if (line.length() == 0 && !key) {
-			ps.setNull(position, java.sql.Types.BOOLEAN);
-		} else {
-			attribute = Boolean.parseBoolean(line);
-			ps.setBoolean(position, attribute);
-		}
-	}
 
 	abstract void insert();
 

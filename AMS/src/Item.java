@@ -1,3 +1,4 @@
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,17 +15,31 @@ public class Item extends Table{
 	public Item(Connection con) {
 		super(con);
 	}
-
+	
+	void update (BufferedReader in, int iupc) throws SQLException, IOException{
+		Statement stmt = con.createStatement();
+		int quantity;
+		
+		System.out.println("Quantity please:");
+		quantity = Integer.parseInt(in.readLine());
+		
+		System.out.println("New price (optional):");
+		String line = in.readLine();
+		if (line.length() == 0) {
+			stmt.executeQuery("UPDATE Item SET item_stock = " + quantity + "WHERE item_upc = " + iupc);
+			
+		} else {
+			stmt.executeQuery("UPDATE Item SET item_stock = " + quantity + ", item_price = " + Double.parseDouble(line) +  " WHERE item_upc = " + iupc);
+		}
+		
+	}
+	
 	@Override
 	void insert() {
 		int                iupc = -1;     //1
-	    String             ititle = null;   //2
-	    String             itype = null;    //3
-	    String             icategory = null; //4
-	    String             icompany = null;  //5
 	    int                iyear = -1;     //6
 	    double             iprice = -1;    //7
-	    boolean            istock = false;    //8
+	    int            	   istock = -1;    //8
 	    PreparedStatement  ps;  
 	      
 	    try
@@ -34,13 +49,13 @@ public class Item extends Table{
 
 	      setNull(ps, askUser(in, "Item UPC: "), true, 1, iupc);
 	      
-	      setNull(ps, askUser(in, "Item Title: "), false, 2, ititle);
+	      setNull(ps, askUser(in, "Item Title: "), false, 2);
 	      
-	      setNull(ps, askUser(in, "Item Type: "), false, 3, itype);
+	      setNull(ps, askUser(in, "Item Type: "), false, 3);
 
-	      setNull(ps, askUser(in, "Item Category: "), false, 4, icategory);
+	      setNull(ps, askUser(in, "Item Category: "), false, 4);
 	                          
-	      setNull(ps, askUser(in, "Item Company: "), false, 5, icompany);
+	      setNull(ps, askUser(in, "Item Company: "), false, 5);
 	      
 	      setNull(ps, askUser(in, "Item Year: "), false, 6, iyear);
 
@@ -71,7 +86,46 @@ public class Item extends Table{
 
 	@Override
 	void delete() {
-		// TODO Auto-generated method stub
+        int                iupc = -1;     
+        PreparedStatement  ps;  
+          
+        try
+        {
+          ps = con.prepareStatement("DELETE FROM Item WHERE item_upc = ?");
+        
+          System.out.print("\n Item Upc: ");
+          iupc = Integer.parseInt(in.readLine());
+          ps.setInt(1, iupc);
+
+          int rowCount = ps.executeUpdate();
+
+          if (rowCount == 0)
+          {
+              System.out.println("\nItem " + iupc + " does not exist!");
+          }
+
+          con.commit();
+
+          ps.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("IOException!");
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+
+                try 
+            {
+            con.rollback(); 
+            }
+            catch (SQLException ex2)
+            {
+            System.out.println("Message: " + ex2.getMessage());
+            System.exit(-1);
+            }
+        }
 		
 	}
 
@@ -142,6 +196,8 @@ public class Item extends Table{
 
 	            istock = rs.getString("item_stock");
 	            checkNull(rs, istock);
+	            
+		        System.out.println(" ");
 
 	        }
 

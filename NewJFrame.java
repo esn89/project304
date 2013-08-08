@@ -4,8 +4,14 @@
  */
 package my.JavaApplication2;
 
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -251,6 +257,11 @@ public class NewJFrame extends javax.swing.JFrame {
         expiryDate.setText("Expiry Date (MM/YY):");
 
         cancelOrder.setText("Cancel Order");
+		cancelOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelOrderMouseClicked(evt);
+            }
+        });
 
         completePurchase.setText("Complete Purchase");
         completePurchase.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -539,14 +550,35 @@ public class NewJFrame extends javax.swing.JFrame {
         quantity.setText("Quantity:");
 
         search.setText("Search");
+		search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchMouseClicked(evt);
+            }
+        });
+
+		buyUPC.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				buyUPCMouseClicked(evt);
+			}
+		});
 
         displaySearch.setViewportView(displaySearchField);
 
         whatDoYouWant.setText("I wish to buy item:");
 
         OK.setText("OK");
+		OK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OKMouseClicked(evt);
+            }
+        });
 
         viewCart.setText("View Cart");
+		viewCart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewCartMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -681,6 +713,11 @@ public class NewJFrame extends javax.swing.JFrame {
         mngrPrice.setText("Price (Optional):");
 
         addToInventory.setText("Add to Inventory");
+		addToInventory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addToInventoryMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout managerPanelLayout = new javax.swing.GroupLayout(managerPanel);
         managerPanel.setLayout(managerPanelLayout);
@@ -790,6 +827,11 @@ public class NewJFrame extends javax.swing.JFrame {
         dsrDate.setText("YYYY-MM-DD:");
 
         dsrButton.setText("Generate Report");
+        dsrButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dsrButtonMouseClicked(evt);
+            }
+        });
 
         dsrTextPane.setViewportView(jTextPane1);
 
@@ -1406,21 +1448,21 @@ public class NewJFrame extends javax.swing.JFrame {
 		if (date.charAt(2) == '-') {
 			System.out.println("yay");
 		}
-			
+
 		jTextPane1.setText("This is an insanely long paragraph to see if i can display a whole bunch of useless shit in this window.  There will be a lot of text here and I hope that it works and doesn't fuck up, doesn't fuck up doesn't fuck up doesn't fuck up.   Ticking away the moments that make up a dull day, fritter and waste the hourse in an off-hand way.  Kicking around on a piece of ground in your home town, waiting for someone or something to show you the way.  Tired of lying in the sunshine, staying home to watch the rain, you are young and life is long and there is time to kill today.  And then one day you realize, ten years have got behind you, no one told you when to run, you missed the starting gun.");
-			
+
 	}
-	
-    private void tsiGoButtonMouseClicked(java.awt.event.MouseEvent evt) {                                         
+
+    private void tsiGoButtonMouseClicked(java.awt.event.MouseEvent evt) {
         // -- {{ What happens when you click the "Go!" button }} --
-    	
+
     	String date;
     	date = tsiDateField.getText();
     	int top;  // top is the "top n" sellers.
-    	
+
     	// grabs value from spinner-box
     	top = (Integer)tsiTheTopSpinner.getValue();
-    	
+
     	if (date.length() == 0) {
     		/*
     		 * throw error
@@ -1431,12 +1473,173 @@ public class NewJFrame extends javax.swing.JFrame {
 			isSuccessRet.setText("Invalid");
     	}
     	// i will need to check to make sure the date format is followed.
-    	
+
     	// for testing purposes:  makes sure that I can get the value from the spinner-box and the text displays correctly.
     	jTextPane2.setText("This is an insanely long paragraph to see if i can display a whole bunch of useless shit in this window.  There will be a lot of text here and I hope that it works and doesn't fuck up, doesn't fuck up doesn't fuck up doesn't fuck up.   Ticking away the moments that make up a dull day, fritter and waste the hourse in an off-hand way.  Kicking around on a piece of ground in your home town, waiting for someone or something to show you the way.  Tired of lying in the sunshine, staying home to watch the rain, you are young and life is long and there is time to kill today.  And then one day you realize, ten years have got behind you, no one told you when to run, you missed the starting gun.");
     	System.out.println(top);
+
+    }
+
+	boolean setClickable = false;
+	int theQuantity;
+	
+	private void searchMouseClicked(java.awt.event.MouseEvent evt) {
+		// -- {{ What happens when the "Search" button is
+		// clicked -- }}
+		
+		String preCategory, preLeadSinger, preTitle, preQuantity;
+		int quantity;
+		String category, leadSinger, title;
+
+		preCategory = categoryField.getText();
+		preLeadSinger = leadSingerField.getText();
+		preTitle = titleField.getText();
+		preQuantity = quantityField.getText();
+		
+		quantity = Integer.parseInt(preQuantity);
+
+		if (preQuantity.length() == 0 || quantity == 0) {
+			/*
+			 * quantity field is empty, throw error
+			 */
+			JOptionPane.showMessageDialog(null, "The quantity field cannot be blank or zero",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+		} else {
+
+			displaySearchField.setText("This is where the results will be returned");
+			/* The "I wish to buy item" field can now be
+			 * filled in"
+			 */
+			category = preCategory;
+			leadSinger = preLeadSinger;
+			title = preTitle;
+			
+			
+			//we can now click on the box now that we have searched.
+			setClickable = true;
+			//we can now type on the box now that we have searched.
+			buyUPC.setFocusable(true);
+			quantity = Integer.parseInt(preQuantity);
+			theQuantity = quantity;
+		}
+	}
+
+	private void buyUPCMouseClicked(java.awt.event.MouseEvent evt) {
+		// -- {{ What happens when you clicked the text
+		// field for "I wish to buy item" }} --
+		//
+		if (setClickable == false) {
+			JOptionPane.showMessageDialog(null, "You need to search for an item first",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			//makes text field lose focus so we cannot forcefully enter UPC without searching
+			buyUPC.setFocusable(false);
+		}
+		
+		
+    }
+	
+	//these need to be global because other functions utilize it.
+	int toBeBought;
+	String preUPC;
+	
+	private void OKMouseClicked(java.awt.event.MouseEvent evt) {
+		// -- {{ What happens when the "OK" button is
+		// clicked }} --
+
+		
+		int UPC;
+
+		preUPC = buyUPC.getText();
+
+		// checks to see if it is empty or not
+		if (preUPC.length() == 0) {
+			JOptionPane.showMessageDialog(null, "You need to enter an item's UPC code first",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+		} 
+		else {
+			UPC = Integer.parseInt(preUPC);
+			// the field isn't empty, now to deal with the
+			// quantity.
+			if (theQuantity >= 10) {
+				JOptionPane.showMessageDialog(null, "We don't have enough",
+						"Inane error",
+						JOptionPane.ERROR_MESSAGE);
+				System.out.println("We do not have enough. " + theQuantity + " is too many of item: " + UPC);
+			} else {
+				
+
+				//we have enough.
+				//do stuff
+				System.out.println("You have added " + theQuantity + " orders of Item UPC: " + toBeBought + " to cart");
+				setClickable = false;
+				
+				//clear all the fields
+				String nothing = "";
+				buyUPC.setText(nothing);
+				quantityField.setText(nothing);
+				titleField.setText(nothing);
+				leadSingerField.setText(nothing);
+				categoryField.setText(nothing);
+			}
+		}
+	}
+	
+	
+    private void viewCartMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        // -- {{ What happens when "View Cart" is pressed }} --
     	
-    } 
+    	//the cart is empty
+    	if( theQuantity == 0 || preUPC.length() == 0) {
+			JOptionPane.showMessageDialog(null, "There is nothing in your cart.",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			
+			// the cart isn't empty
+    	} else {
+
+    		JFrame frame = new JFrame();
+
+    		Object stringArray[] = { "Proceed With Checkout", "Continue Shopping" };
+    		int n = JOptionPane.showOptionDialog(frame, "Your cart contains the following:" + theQuantity + " orders of Item UPC: " + toBeBought, "Select an Option",
+    				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, stringArray,
+    				stringArray[0]);
+    		System.out.println(n);
+
+
+    		// if n = 0, it means the user selected, "Proceed With Czechout"
+    		if( n == 0 ) {
+    			//    		// if the quantity and item UPC fields are not filled
+    			//    		if( theQuantity == 0 || preUPC.length() == 0) {
+    			//    			JOptionPane.showMessageDialog(null, "Make sure there is a quantity or Item UPC entered",
+    			//    					"Inane error",
+    			//    					JOptionPane.ERROR_MESSAGE);
+    			//
+    			//    			//it is filled, so this is good.
+    			//    		} else {
+
+    			JTextField field1 = new JTextField("");
+    			JTextField field2 = new JTextField("");
+    			JPanel panel = new JPanel(new GridLayout(0, 1));
+    			panel.add(new JLabel("Credit Card:"));
+    			panel.add(field1);
+    			panel.add(new JLabel("Expiry Date (MM/YY):"));
+    			panel.add(field2);
+    			int result = JOptionPane.showConfirmDialog(null, panel, "Test",
+    					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    			System.out.println(result);
+    		}
+
+
+    	} // this means that they wanted to continue shopping
+   	  
+    }
+	
+	
+
+
 
     /**
      * @param args the command line arguments

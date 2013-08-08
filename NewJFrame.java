@@ -83,6 +83,21 @@ public class NewJFrame extends javax.swing.JFrame {
         cusAddress = new javax.swing.JTextField();
         cusPhone = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
+        category = new javax.swing.JLabel();
+        leadSinger = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        quantity = new javax.swing.JLabel();
+        search = new javax.swing.JButton();
+        categoryField = new javax.swing.JTextField();
+        leadSingerField = new javax.swing.JTextField();
+        titleField = new javax.swing.JTextField();
+        quantityField = new javax.swing.JTextField();
+        displaySearch = new javax.swing.JScrollPane();
+        displaySearchField = new javax.swing.JTextPane();
+        whatDoYouWant = new javax.swing.JLabel();
+        buyUPC = new javax.swing.JTextField();
+        OK = new javax.swing.JButton();
+        viewCart = new javax.swing.JButton();
         manager = new javax.swing.JPanel();
         addItem = new javax.swing.JRadioButton();
         processDelivery = new javax.swing.JRadioButton();
@@ -97,27 +112,29 @@ public class NewJFrame extends javax.swing.JFrame {
         itemUPCInput = new javax.swing.JTextField();
         quantityInput = new javax.swing.JTextField();
         processDeliPanel = new javax.swing.JPanel();
-        processDaySpinner = new javax.swing.JSpinner();
-        processMonthSpinner = new javax.swing.JSpinner();
         processDay = new javax.swing.JLabel();
         procesMonth = new javax.swing.JLabel();
         processOrderID = new javax.swing.JLabel();
         orderID = new javax.swing.JTextField();
         processButton = new javax.swing.JButton();
+        processYear = new javax.swing.JLabel();
+        processDayField = new javax.swing.JTextField();
+        processMonthField = new javax.swing.JTextField();
+        processyearField = new javax.swing.JTextField();
         dsReportPanel = new javax.swing.JPanel();
         dsrDate = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        dsrDisplay = new javax.swing.JTextArea();
         dsrDateField = new javax.swing.JTextField();
         dsrButton = new javax.swing.JButton();
+        dsrTextPane = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         tsiPanel = new javax.swing.JPanel();
         tsiDate = new javax.swing.JLabel();
         tsiTheTop = new javax.swing.JLabel();
         tsiTheTopSpinner = new javax.swing.JSpinner();
         tsiGoButton = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tsiDisplay = new javax.swing.JTextArea();
         tsiDateField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -207,7 +224,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(deletePrevious)
                     .addComponent(addToCart)
                     .addComponent(cancelOrder1))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Payment Method"));
@@ -231,15 +248,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
         ccNumber.setText("Credit Card # :");
 
-        expiryDate.setText("Expiry Date:");
+        expiryDate.setText("Expiry Date (MM/YY):");
 
         cancelOrder.setText("Cancel Order");
-        cancelOrder.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelOrderMouseClicked(evt);
-            }
-        });
-        
 
         completePurchase.setText("Complete Purchase");
         completePurchase.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -277,7 +288,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(completePurchase)
                             .addComponent(fieldforExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 32, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -296,7 +307,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(expiryDate)
                         .addComponent(totalLabel)
                         .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelOrder)
                     .addComponent(completePurchase))
@@ -312,7 +323,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(PurchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(itemInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         PurchaseLayout.setVerticalGroup(
             PurchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +332,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(itemInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         Return.setBorder(javax.swing.BorderFactory.createTitledBorder("Return"));
@@ -401,7 +412,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(ReturnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(issueRefund)
                     .addComponent(isSuccessRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout clerkLayout = new javax.swing.GroupLayout(clerk);
@@ -492,7 +503,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cusAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cusPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         registrationPanelLayout.setVerticalGroup(
             registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -519,15 +530,100 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        category.setText("Category:");
+
+        leadSinger.setText("Lead Singer:");
+
+        title.setText("Title:");
+
+        quantity.setText("Quantity:");
+
+        search.setText("Search");
+
+        displaySearch.setViewportView(displaySearchField);
+
+        whatDoYouWant.setText("I wish to buy item:");
+
+        OK.setText("OK");
+
+        viewCart.setText("View Cart");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(displaySearch, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(whatDoYouWant)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(buyUPC, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(OK)))
+                                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(viewCart)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(category)
+                            .addComponent(title))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(categoryField)
+                            .addComponent(titleField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(leadSinger)
+                            .addComponent(quantity))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(leadSingerField, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(search)
+                                .addGap(81, 81, 81))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(category)
+                    .addComponent(leadSinger, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(leadSingerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(title)
+                    .addComponent(quantity)
+                    .addComponent(search)
+                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(displaySearch, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(whatDoYouWant)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buyUPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(OK))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewCart)
+                        .addGap(76, 76, 76))))
         );
 
         javax.swing.GroupLayout customerLayout = new javax.swing.GroupLayout(customer);
@@ -559,7 +655,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(purchaseOnline)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bigPane.addTab("Customer", customer);
@@ -627,13 +723,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
         processDeliPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        processDay.setText("Day:");
+        processDay.setText("Day (DD):");
 
-        procesMonth.setText("Month:");
+        procesMonth.setText("Month (MM):");
 
         processOrderID.setText("Order ID:");
 
         processButton.setText("Process");
+        processButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                processButtonMouseClicked(evt);
+            }
+        });
+
+        processYear.setText("Year (YYYY):");
 
         javax.swing.GroupLayout processDeliPanelLayout = new javax.swing.GroupLayout(processDeliPanel);
         processDeliPanel.setLayout(processDeliPanelLayout);
@@ -645,17 +748,22 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(processDay)
                     .addComponent(processOrderID))
                 .addGap(51, 51, 51)
-                .addGroup(processDeliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(processDeliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(processDayField)
+                    .addComponent(orderID, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addGroup(processDeliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(processDeliPanelLayout.createSequentialGroup()
-                        .addComponent(processDaySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
+                        .addComponent(processButton)
+                        .addGap(213, 213, 213))
+                    .addGroup(processDeliPanelLayout.createSequentialGroup()
                         .addComponent(procesMonth)
-                        .addGap(72, 72, 72)
-                        .addComponent(processMonthSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(processDeliPanelLayout.createSequentialGroup()
-                        .addComponent(orderID, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109)
-                        .addComponent(processButton)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(processMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(processYear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(processyearField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         processDeliPanelLayout.setVerticalGroup(
@@ -663,11 +771,13 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(processDeliPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(processDeliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(processDaySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(processMonthSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(processDay)
-                    .addComponent(procesMonth))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                    .addComponent(procesMonth)
+                    .addComponent(processYear)
+                    .addComponent(processDayField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(processMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(processyearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(processDeliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(processOrderID)
                     .addComponent(orderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -677,13 +787,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         dsReportPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        dsrDate.setText("DD-MM-YYYY:");
+        dsrDate.setText("YYYY-MM-DD:");
 
-        dsrDisplay.setColumns(20);
-        dsrDisplay.setRows(5);
-        jScrollPane2.setViewportView(dsrDisplay);
+        dsrButton.setText("Generate Report");
 
-        dsrButton.setText("jButton2");
+        dsrTextPane.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout dsReportPanelLayout = new javax.swing.GroupLayout(dsReportPanel);
         dsReportPanel.setLayout(dsReportPanelLayout);
@@ -692,14 +800,15 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(dsReportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(dsReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dsrTextPane)
                     .addGroup(dsReportPanelLayout.createSequentialGroup()
                         .addComponent(dsrDate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dsrDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(dsrButton)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(dsrButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         dsReportPanelLayout.setVerticalGroup(
             dsReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -709,28 +818,31 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(dsrDate)
                     .addComponent(dsrDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dsrButton))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dsrTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tsiPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tsiDate.setText("DD-MM-YYY:");
+        tsiDate.setText("YYYY-MM-DD:");
 
         tsiTheTop.setText("The top");
 
         tsiGoButton.setText("Go!");
-
-        tsiDisplay.setColumns(20);
-        tsiDisplay.setRows(5);
-        jScrollPane3.setViewportView(tsiDisplay);
+        tsiGoButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tsiGoButtonMouseClicked(evt);
+            }
+        });
 
         tsiDateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tsiDateFieldActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setViewportView(jTextPane2);
 
         javax.swing.GroupLayout tsiPanelLayout = new javax.swing.GroupLayout(tsiPanel);
         tsiPanel.setLayout(tsiPanelLayout);
@@ -739,7 +851,7 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(tsiPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tsiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1)
                     .addGroup(tsiPanelLayout.createSequentialGroup()
                         .addComponent(tsiDate)
                         .addGap(109, 109, 109)
@@ -749,8 +861,9 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tsiTheTopSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
-                        .addComponent(tsiGoButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(tsiGoButton)
+                        .addGap(0, 163, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         tsiPanelLayout.setVerticalGroup(
             tsiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -763,7 +876,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(tsiGoButton)
                     .addComponent(tsiDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -784,7 +897,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(dsReportPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(managerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tsiPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
         managerLayout.setVerticalGroup(
             managerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -793,7 +906,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(addItem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(managerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
                 .addComponent(processDelivery)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(processDeliPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -805,7 +918,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(topSellingItems)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tsiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bigPane.addTab("Manager", manager);
@@ -831,20 +944,25 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+    // :::::::! HERE BEGINS THE CODE FOR THE CLERK TAB !:::::::::: //
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+
     //total price that will be displayed
     int dollars = 0;
 
-    private void addToCartMouseClicked(java.awt.event.MouseEvent evt) {                                       
-        
+    private void addToCartMouseClicked(java.awt.event.MouseEvent evt) {
+
         // -- {{ What happens when you press the "ADD TO CART" button }} --
-    	
+
     	String preiid, prequantity;
         int iid;
         int quantity;
-        
+
         preiid = enterItemUPC.getText();
         prequantity = enterItemQuan.getText();
-        
+
         // Checks to see if one of the Item UPC or Quantity fields are blank
         if (preiid.length() == 0 || prequantity.length() == 0) {
         	// Error message
@@ -852,7 +970,7 @@ public class NewJFrame extends javax.swing.JFrame {
     				"Inane error",
     				JOptionPane.ERROR_MESSAGE);
     		isValid.setText("Invalid");
-        	
+
     		//All is well
         } else {
 
@@ -867,14 +985,14 @@ public class NewJFrame extends javax.swing.JFrame {
         	// For debugging purposes:
         	System.out.println("you entered: " + iid + " " + quantity);
         }
-        
-    } 
-    
-    
-    private void cancelOrder1MouseClicked(java.awt.event.MouseEvent evt) {                                          
+
+    }
+
+
+    private void cancelOrder1MouseClicked(java.awt.event.MouseEvent evt) {
         // -- {{ What happens when the first cancel order is clicked? }} --
     	// It should clear out all the text fields.
-    	
+
     	String nothing;
     	nothing = "";
     	enterItemUPC.setText(String.valueOf(nothing));
@@ -882,28 +1000,28 @@ public class NewJFrame extends javax.swing.JFrame {
     	total.setText(String.valueOf(nothing));
     	fieldForCC.setText(String.valueOf(nothing));
     	fieldforExpiryDate.setText(String.valueOf(nothing));
-    	
+
     	//very important to reset the total amount when the previous order has been cancelled.
     	dollars = 0;
-    }  
-    
-    private void cancelOrderMouseClicked(java.awt.event.MouseEvent evt) {                                          
+    }
+
+    private void cancelOrderMouseClicked(java.awt.event.MouseEvent evt) {
         // -- {{ What happens when the first cancel order is clicked? }} --
     	// It should clear out all the text fields.
-    	
+
     	String nothing;
     	nothing = "";
     	enterItemUPC.setText(String.valueOf(nothing));
     	enterItemQuan.setText(String.valueOf(nothing));
     	total.setText(String.valueOf(nothing));
     	fieldForCC.setText(String.valueOf(nothing));
-    	fieldforExpiryDate.setText(String.valueOf(nothing));  
-    	
+    	fieldforExpiryDate.setText(String.valueOf(nothing));
+
     	//very important to reset the total amount when the previous order has been cancelled.
     	dollars = 0;
-    }  
-    
-    private void deletePreviousMouseClicked(java.awt.event.MouseEvent evt) {                                            
+    }
+
+    private void deletePreviousMouseClicked(java.awt.event.MouseEvent evt) {
         // ADD THE DELETE PREVIOUS SQL STATEMENT HERE
     	//hesitant to add code here.  I don't think it was a requirement, maybe we can do it for the bonus?
     }
@@ -961,11 +1079,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void checkReceiptMouseClicked(java.awt.event.MouseEvent evt) {
         // -- {{ What happens when "Check Receipt" button is pressed }} --
-    	
+
     	int rid;
     	String prerid;
     	prerid = fieldForReceiptID.getText();
-    	
+
     	//checks to see if ReceiptID field is left empty.
     	if(prerid.length() == 0) {
 
@@ -974,17 +1092,17 @@ public class NewJFrame extends javax.swing.JFrame {
     				JOptionPane.ERROR_MESSAGE);
     		isValid.setText("Invalid");
     	} else {
-    		//Not empty! Yay the clerk isn't retarded.    		
+    		//Not empty! Yay the clerk isn't retarded.
     		// rid is receipt ID, now we need a SQL statement to verify that the RID exists in the statement.
     		rid = Integer.parseInt(fieldForReceiptID.getText());
-    	
-    	
+
+
     	//if valid:
     	isValid.setText("Valid");
-    	
+
     	//if not valid:
     	//isValid.setText("Not Valid");
-    	
+
     	// For testing purposes:
     	System.out.println("Your receipt is " + rid + ".");
     	}
@@ -992,42 +1110,42 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void issueRefundMouseClicked(java.awt.event.MouseEvent evt) {
         // -- {{ What happens when the "Issue Refund" button is clicked }} --
-    	
+
     	String preiid, prequantity;
     	int iid, quantity;
-    	
+
     	preiid = returnIUPCField.getText();
     	prequantity = returnQuanField.getText();
-    	
+
     	if (preiid.length() == 0 || prequantity.length() == 0) {
     		JOptionPane.showMessageDialog(null, " The Item UPC and Quantity fields cannot be blank.",
     				"Inane error",
     				JOptionPane.ERROR_MESSAGE);
     		isSuccessRet.setText("Invalid");
-    		
+
     	} else {
     		// All the fields are filled in
     	iid = Integer.parseInt(returnIUPCField.getText());
     	quantity = Integer.parseInt(returnQuanField.getText());
-    	
+
     	// For debugging purposes
     	System.out.println("You have returned: " + quantity + " of item upc: " + iid);
     	isSuccessRet.setText("Valid");
     	}
-    	
-    	
+
+
     }
-    
-    private void completePurchaseMouseClicked(java.awt.event.MouseEvent evt) {                                              
-        // -- {{ What happens when the "Complete Purchase" button is pressed }} -- 
+
+    private void completePurchaseMouseClicked(java.awt.event.MouseEvent evt) {
+        // -- {{ What happens when the "Complete Purchase" button is pressed }} --
     	String boxValue;
     	String preCC, preExpDate;
     	int CC, ExpDate = 0;
     	boxValue = cashOrCard.getSelectedItem().toString();
-    	
+
     	preCC = fieldForCC.getText();
     	preExpDate = fieldforExpiryDate.getText();
-    	
+
     	if (boxValue == "Cash") {
     		// paying by Cash, but, is the clerk dumb enough to fill in CC fields?
     		if ( preCC.length() != 0 || preExpDate.length() != 0 ) {
@@ -1036,19 +1154,19 @@ public class NewJFrame extends javax.swing.JFrame {
     					JOptionPane.ERROR_MESSAGE);
     			isSuccessRet.setText("Invalid");
 
-    		} else { 
+    		} else {
     			// those fields are empty, now let's check to see if there is shit in the cart.
-    			
+
     			// The grand total's field is empty, there is nothing, throw error.
     			if (total.getText().length() == 0) {
     				JOptionPane.showMessageDialog(null, "Seems to be no items in cart.",
     						"Inane error",
     						JOptionPane.ERROR_MESSAGE);
-    				isSuccessRet.setText("Invalid");      		
+    				isSuccessRet.setText("Invalid");
     			} else {
     				//There is a grand total AND the credit card fields are NOT filled out.
     				//do stuff
-    				
+
     				JOptionPane.showMessageDialog(null, "Thank you for your purchase by cash.");
     			}
     		}
@@ -1068,65 +1186,65 @@ public class NewJFrame extends javax.swing.JFrame {
     				JOptionPane.showMessageDialog(null, "Seems to be no items in cart.",
     						"Inane error",
     						JOptionPane.ERROR_MESSAGE);
-    				isSuccessRet.setText("Invalid");      		
+    				isSuccessRet.setText("Invalid");
     			} else {
     				//There is a grand total AND the credit card fields are filled out.
-    				
-    				
+
+
     				//do stuff
-    				
-    				
+
+
     				//Sets the credit card number to CC (an INT) and expiry date to ExpDate (an INT)
     				CC = Integer.parseInt(fieldForCC.getText());
     				ExpDate = Integer.parseInt(fieldforExpiryDate.getText());
-    				
+
     				JOptionPane.showMessageDialog(null, "Thank you for your purchase by credit card.  Now we can commit credit card fraud.");
-    				
+
     				//For Testing Purposes:
     				System.out.println("Your CC #: " + CC + " and expiry date is: " + ExpDate);
-    				   				
-    				
+
+
     			}
     		}
     	}
-    	    	
+
     	// For debugging purposes
     	System.out.println(boxValue);
-    }  
-    
-    
-   
+    }
+
+
+
 
     private void returnQuanFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnQuanFieldActionPerformed
         // TOdd your handling code here:
     }//GEN-LAST:event_returnQuanFieldActionPerformed
-    
-    
+
+
     // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
     // :::::::! HERE BEGINS THE CODE FOR THE CUSTOMER TAB !::::::: //
     // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-    
-    private void createButtonMouseClicked(java.awt.event.MouseEvent evt) {                                          
+
+    private void createButtonMouseClicked(java.awt.event.MouseEvent evt) {
         // -- {{ What happens when the "Create Button" is pressed? }} --
-    	
+
     	String preName, preAddress, preID, prePhone, prePassword;
     	String name, address, phone, password;
     	int id;
-    	
+
     	preName = cusName.getText();
     	preAddress = cusAddress.getText();
     	preID = cusID.getText();
     	prePhone = cusPhone.getText();
     	prePassword = cusPassword.getText();
-    	
-    	
-    	// For name, aside from checking to see if the user inputted anything, I feel that we need to make sure in the SQL database, 
+
+
+    	// For name, aside from checking to see if the user inputted anything, I feel that we need to make sure in the SQL database,
     	// that it has not been taken.  We shall expand this if statement a bit more.
     	if (preName.length() == 0) {
 			JOptionPane.showMessageDialog(null, "Name cannot be blank.",
 					"Inane error",
 					JOptionPane.ERROR_MESSAGE);
-			isSuccessRet.setText("Invalid");    		
+			isSuccessRet.setText("Invalid");
     	}
     	if (preAddress.length() == 0) {
 			JOptionPane.showMessageDialog(null, "Address cannot be blank.",
@@ -1151,9 +1269,9 @@ public class NewJFrame extends javax.swing.JFrame {
 					"Inane error",
 					JOptionPane.ERROR_MESSAGE);
 			isSuccessRet.setText("Invalid");
-			
-    	} 
-    	
+
+    	}
+
     	String idChecker=cusID.getText();
     	boolean incorrect = true;
     	while(incorrect){
@@ -1164,7 +1282,7 @@ public class NewJFrame extends javax.swing.JFrame {
     		}
 
     	}
-    
+
 
     	// All fields are good to go:
     	name = preName;
@@ -1175,13 +1293,150 @@ public class NewJFrame extends javax.swing.JFrame {
 
     	// For testing purposes:
 
-    	System.out.println ("Customer: " + name + " who lives at: " + address + "with the id: " + id + " and phone number: " + 
+    	System.out.println ("Customer: " + name + " who lives at: " + address + "with the id: " + id + " and phone number: " +
     			phone + " with password: " + password + "has been successfully created.");
-    
+
+
+    }
+
+
+	// !!!  don't forget to do process online order !!!
+
+
+
+
+
+
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+    // :::::::! HERE BEGINS THE CODE FOR THE MANAGER TAB !:::::::: //
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+	private void addToInventoryMouseClicked(java.awt.event.MouseEvent evt) {
+        // -- {{ What happens when "Add To Inventory" button is clicked }} --
+
+		String preIid, preQuantity, prePrice;
+		int iid, quantity;
+		float price;
+
+		preIid = itemUPCInput.getText();
+		preQuantity = quantityInput.getText();
+		prePrice = priceInput.getText();
+
+		// price and quantity cannot be empty
+		if (preQuantity.length() == 0 || preIid.length() == 0) {
+			/*
+			 * throw an error.
+			 */
+			JOptionPane.showMessageDialog(null, "Quantity or Item UPC cannot be blank.",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");
+
+		} else {
+			/*
+			 * check to see if price field is empty or not,
+			 */
+			iid = Integer.parseInt(preIid);
+			quantity = Integer.parseInt(preQuantity);
+
+			if (prePrice.length() == 0) {
+				System.out.println("You have entered: " + quantity + " of item: " + iid);
+			} else {
+				/*
+				 * price field has price in it
+				 */
+				price = Float.parseFloat(prePrice);
+				System.out.println("You have entered: " + quantity + " of item: " + iid + " with price: " + price);
+			}
+		}
+    }
+
+    private void processButtonMouseClicked(java.awt.event.MouseEvent evt) {
+        // -- {{ What happens when "Process" button is clicked }} --
+
+    	String preDay, preMonth, preYear, preOrderID;
+    	String dateString;   // date as a string in DD-MM-YYYY format ready to be used for SQL?
+		int processDeliOrderID;
+
+		/*
+		 * make sure none of the four fields are null:
+		 */
+		preDay = processDayField.getText();
+		preMonth = processMonthField.getText();
+		preYear = processyearField.getText();
+		preOrderID = orderID.getText();
+
+		if (preDay.length() == 0 || preMonth.length() == 0 || preYear.length() == 0 || preOrderID.length() == 0) {
+			/*
+			 * throw error dialog box
+			 */
+			JOptionPane.showMessageDialog(null, "Are all fields filled in?",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");
+		} else {
+
+			processDeliOrderID = Integer.parseInt(preOrderID);
+			dateString = preDay + "-" + preMonth + "-" + preYear;
+			/*
+			 * do stuff with the dateString.  I will leave
+			 *this up to the SQL-team
+			 */
+			System.out.println("The order: " + processDeliOrderID + " " + "has been processed on: " + dateString);
+
+			}
+    }
+
+
+	private void dsrButtonMouseClicked(java.awt.event.MouseEvent evt) {
+		// -- {{ What happens when "Generate Report" button
+		// is pressed }} --
+		String date;
+		date = dsrDateField.getText();
+
+		if (date.length() == 0) {
+			/*
+			 * throw error
+			 */
+			JOptionPane.showMessageDialog(null, "The date field cannot be blank",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");
+		}
+		if (date.charAt(2) == '-') {
+			System.out.println("yay");
+		}
+			
+		jTextPane1.setText("This is an insanely long paragraph to see if i can display a whole bunch of useless shit in this window.  There will be a lot of text here and I hope that it works and doesn't fuck up, doesn't fuck up doesn't fuck up doesn't fuck up.   Ticking away the moments that make up a dull day, fritter and waste the hourse in an off-hand way.  Kicking around on a piece of ground in your home town, waiting for someone or something to show you the way.  Tired of lying in the sunshine, staying home to watch the rain, you are young and life is long and there is time to kill today.  And then one day you realize, ten years have got behind you, no one told you when to run, you missed the starting gun.");
+			
+	}
+	
+    private void tsiGoButtonMouseClicked(java.awt.event.MouseEvent evt) {                                         
+        // -- {{ What happens when you click the "Go!" button }} --
     	
-    }    
-    
-    
+    	String date;
+    	date = tsiDateField.getText();
+    	int top;  // top is the "top n" sellers.
+    	
+    	// grabs value from spinner-box
+    	top = (Integer)tsiTheTopSpinner.getValue();
+    	
+    	if (date.length() == 0) {
+    		/*
+    		 * throw error
+    		 */
+			JOptionPane.showMessageDialog(null, "The date field cannot be blank",
+					"Inane error",
+					JOptionPane.ERROR_MESSAGE);
+			isSuccessRet.setText("Invalid");
+    	}
+    	// i will need to check to make sure the date format is followed.
+    	
+    	// for testing purposes:  makes sure that I can get the value from the spinner-box and the text displays correctly.
+    	jTextPane2.setText("This is an insanely long paragraph to see if i can display a whole bunch of useless shit in this window.  There will be a lot of text here and I hope that it works and doesn't fuck up, doesn't fuck up doesn't fuck up doesn't fuck up.   Ticking away the moments that make up a dull day, fritter and waste the hourse in an off-hand way.  Kicking around on a piece of ground in your home town, waiting for someone or something to show you the way.  Tired of lying in the sunshine, staying home to watch the rain, you are young and life is long and there is time to kill today.  And then one day you realize, ten years have got behind you, no one told you when to run, you missed the starting gun.");
+    	System.out.println(top);
+    	
+    } 
 
     /**
      * @param args the command line arguments
@@ -1218,6 +1473,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton OK;
     private javax.swing.JPanel Purchase;
     private javax.swing.JPanel Return;
     private javax.swing.JRadioButton addItem;
@@ -1228,9 +1484,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupClerk;
     private javax.swing.ButtonGroup buttonGroupCustomer;
     private javax.swing.ButtonGroup buttonGroupManager;
+    private javax.swing.JTextField buyUPC;
     private javax.swing.JButton cancelOrder;
     private javax.swing.JButton cancelOrder1;
     private javax.swing.JComboBox cashOrCard;
+    private javax.swing.JLabel category;
+    private javax.swing.JTextField categoryField;
     private javax.swing.JLabel ccNumber;
     private javax.swing.JButton checkReceipt;
     private javax.swing.JPanel clerk;
@@ -1244,11 +1503,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel customer;
     private javax.swing.JRadioButton dailySalesReport;
     private javax.swing.JButton deletePrevious;
+    private javax.swing.JScrollPane displaySearch;
+    private javax.swing.JTextPane displaySearchField;
     private javax.swing.JPanel dsReportPanel;
     private javax.swing.JButton dsrButton;
     private javax.swing.JLabel dsrDate;
     private javax.swing.JTextField dsrDateField;
-    private javax.swing.JTextArea dsrDisplay;
+    private javax.swing.JScrollPane dsrTextPane;
     private javax.swing.JTextField enterItemQuan;
     private javax.swing.JTextField enterItemUPC;
     private javax.swing.JLabel enterReceiptID;
@@ -1266,8 +1527,11 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JLabel leadSinger;
+    private javax.swing.JTextField leadSingerField;
     private javax.swing.JPanel manager;
     private javax.swing.JPanel managerPanel;
     private javax.swing.JLabel mngrItemUPC;
@@ -1282,14 +1546,18 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel procesMonth;
     private javax.swing.JButton processButton;
     private javax.swing.JLabel processDay;
-    private javax.swing.JSpinner processDaySpinner;
+    private javax.swing.JTextField processDayField;
     private javax.swing.JPanel processDeliPanel;
     private javax.swing.JRadioButton processDelivery;
-    private javax.swing.JSpinner processMonthSpinner;
+    private javax.swing.JTextField processMonthField;
     private javax.swing.JLabel processOrderID;
     private javax.swing.JRadioButton processPurchase;
     private javax.swing.JRadioButton processReturn;
+    private javax.swing.JLabel processYear;
+    private javax.swing.JTextField processyearField;
     private javax.swing.JRadioButton purchaseOnline;
+    private javax.swing.JLabel quantity;
+    private javax.swing.JTextField quantityField;
     private javax.swing.JTextField quantityInput;
     private javax.swing.JRadioButton registration;
     private javax.swing.JPanel registrationPanel;
@@ -1297,15 +1565,19 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel returnItemUPC;
     private javax.swing.JTextField returnQuanField;
     private javax.swing.JLabel returnQuantity;
+    private javax.swing.JButton search;
+    private javax.swing.JLabel title;
+    private javax.swing.JTextField titleField;
     private javax.swing.JRadioButton topSellingItems;
     private javax.swing.JTextField total;
     private javax.swing.JLabel totalLabel;
     private javax.swing.JLabel tsiDate;
     private javax.swing.JTextField tsiDateField;
-    private javax.swing.JTextArea tsiDisplay;
     private javax.swing.JButton tsiGoButton;
     private javax.swing.JPanel tsiPanel;
     private javax.swing.JLabel tsiTheTop;
     private javax.swing.JSpinner tsiTheTopSpinner;
+    private javax.swing.JButton viewCart;
+    private javax.swing.JLabel whatDoYouWant;
     // End of variables declaration//GEN-END:variables
 }

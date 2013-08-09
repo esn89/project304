@@ -1,0 +1,88 @@
+Depending on your role:  Customer, Clerk, Manager, select the corresponding tab.
+
+If you just want a summary view of tables - select the "Summary" tab.
+Once inside the Summary tab you are able to enter the table you want into the field and clicking the button.
+
+======================================================
+
+As a Clerk you get the transactions of:
+        1.      Processing a purchase
+        2.      Processing a return
+
+
+To process a customer's purchase:
+        -Select the 'Clerk' tab
+        -Select the 'Process a Purchase' radio button
+        -Enter Item UPC and Quantity and press 'Add To Cart'
+
+To accept payment:
+        -Select either 'Cash' or 'Credit Card' from the top down menu by clicking once
+        and using the UP/DOWN arrow keys on your keyboard.
+        -Your total price will display, if not, the purchase will be impossible when
+        you click on 'Complete Purchase'
+        -If you are paying by cash, the fields for 'Credit Card #' and 'Expiry Date'
+        should be left blank, otherwise you will experience an pop-up warning you
+
+To process a return:
+        -Fill in the receipt ID field with a number.
+        -Click on 'Check Receipt'
+        -Take note on the box to the right of it, there should be an indicator telling
+        you whether or not the receipt is valid or not valid for return.
+        -If it is, simply enter the Item UPC and the Quantity (all numbers) and hit
+        'Issue Refund'
+        -Again, the text field to the right of 'Issue Refund' will notify you whether
+        or not the refund was a success or not.
+
+======================================================
+
+As a Customer you get the transactions of:
+        1.      Registering for an account
+        2.      Purchasing items online
+
+To register for an account:
+        -Fill in all the fields
+        -Make sure that the 'ID' field is strictly numbers
+        -Click on the 'Create!' button
+        -If the field is missing, there will be a pop-up dialog warning you
+
+To purchase items online:
+        -First conduct a search by filling in 'Category'(optional), 'Lead Singer'
+        (optional), 'Title'(optional) and 'Quantity' (mandatory).
+        -You will notice that the system won't let you select the 'I wish to buy item'
+        text field or the button until you have conducted a search
+        -Once you see the items you want, enter in the UPC in the 'I wish to buy item'
+        text field and hit 'OK'
+        -If the quantity you want is more than what the store has to offer, a dialog
+        box will pop up asking if the current in-stock quantity is enough.
+        -To check out, hit 'View Cart' and once you like what you see, select 'Proceed
+        to Checkout' and from there you will be prompted for credit card information
+
+======================================================
+
+As a Manager you get the transactions of:
+        1.      Adding items to the store
+        2.      Process a delivery
+        3.      Display 'Daily Sales Reports'
+        4.      Display 'Top Selling Items'
+
+To add items to the store:
+        -Enter in the item's UPC
+        -Enter in the quantity
+        -The price is optional unless you want to update the price
+        -Hit 'Add to Inventory'
+
+To process deliveries:
+        -Enter the order ID, which must be a number
+        -Hit 'Process'
+
+To display daily sales reports:
+        -Enter the date exactly as the format shown
+        -Hit 'Generate Report'
+
+To display top selling items:
+        -Enter the date exactly as the format shown
+        -Pick the number representing the top items you wish to see
+        -Press 'Go!'
+
+
+
